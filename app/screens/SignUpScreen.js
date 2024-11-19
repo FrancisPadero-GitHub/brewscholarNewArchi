@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Platform,
   KeyboardAvoidingView,
+  
 } from "react-native";
 import React, { useState } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -16,13 +17,14 @@ import LinkButton from "../../components/LinkButton";
 import SignInUp from "../../components/SignInUp";
 
 const SignUpScreen = ({ navigation }) => {
+  //being used in users inputs
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
-  // Functions
+  // see password
   const togglePasswordVisibility = () => {
     setPasswordVisible(!isPasswordVisible);
     Keyboard.dismiss();
@@ -46,13 +48,15 @@ const SignUpScreen = ({ navigation }) => {
       <View style={styles.blackCont}>
         <View style={styles.formContainer}>
           <TextInput
-            placeholder="You Name"
+            placeholder="Your Name"
+            placeholderTextColor="#1e1e1e"
             style={styles.nameInput}
             value={name}
             onChangeText={setName}
           ></TextInput>
           <TextInput
             placeholder="Email"
+            placeholderTextColor="#1e1e1e"
             style={styles.emailInput}
             value={email}
             onChangeText={setEmail}
@@ -61,6 +65,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.passConts}>
             <TextInput
               placeholder="Password"
+              placeholderTextColor="#1e1e1e"
               style={styles.passInputs}
               value={password}
               onChangeText={setPassword}
@@ -84,6 +89,7 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.passConts}>
             <TextInput
               placeholder="Confirm Password"
+              placeholderTextColor="#1e1e1e"
               style={styles.passInputs}
               value={confirmPass}
               onChangeText={setConfirmPass}
@@ -94,13 +100,6 @@ const SignUpScreen = ({ navigation }) => {
               onPress={togglePasswordVisibility}
               activeOpacity="100%"
             >
-              <Ionicons
-                style={styles.eyeIcon}
-                onPress={togglePasswordVisibility}
-                name={isPasswordVisible ? "eye" : "eye-off"}
-                size={20}
-                color="#1e1e1e"
-              />
             </TouchableOpacity>
           </View>
           <SignInUp

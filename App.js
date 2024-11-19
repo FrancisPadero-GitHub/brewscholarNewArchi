@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 // Screens
@@ -20,102 +21,115 @@ const Tab = createBottomTabNavigator();
 
 const Dashboard = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: styles.tabBar,
-        tabBarActiveTintColor: "#FFD700",
-        tabBarInactiveTintColor: "#ffffff",
-      }}
-    >
-      <Tab.Screen
-        name="Home Screen"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
-          ),
+    <>
+      <StatusBar style="auto" />
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: styles.tabBar,
+          tabBarActiveTintColor: "#FFD700",
+          tabBarInactiveTintColor: "#ffffff",
         }}
-      />
-      <Tab.Screen
-        name="Tracking Screen"
-        component={TrackingScreen}
-        options={{
-          tabBarLabel: "Applications",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="document-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Notification Screen"
-        component={NotificationScreen}
-        options={{
-          tabBarLabel: "Notifications",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="notifications-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile Screen"
-        component={ProfileScreen}
-        options={{
-          tabBarLabel: "Me",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-circle-outline" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      >
+        <Tab.Screen
+          name="Home Screen"
+          component={HomeScreen}
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="home-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Tracking Screen"
+          component={TrackingScreen}
+          options={{
+            tabBarLabel: "Applications",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="document-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Notification Screen"
+          component={NotificationScreen}
+          options={{
+            tabBarLabel: "Notifications",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons
+                name="notifications-outline"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile Screen"
+          component={ProfileScreen}
+          options={{
+            tabBarLabel: "Me",
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons
+                name="person-circle-outline"
+                size={size}
+                color={color}
+              />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </>
   );
 };
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Welcome Screen"
-          component={WelcomeScreen}
-          options={{
-            headerShown: true,
-            title: "",
-            headerStyle: {
-              shadowOpacity: 0,
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Registration Screen"
-          component={SignUpScreen}
-          options={{
-            headerShown: true,
-            title: "Registration",
-            headerStyle: {
-              shadowOpacity: 0,
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Login Screen"
-          component={LoginScreen}
-          options={{
-            title: "Authentication",
-            headerStyle: {
-              shadowOpacity: 1, // Removes shadow on iOS
-            },
-          }}
-        />
-
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={{ headerShown: false }} // Hide header for Dashboard
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Welcome Screen"
+            component={WelcomeScreen}
+            options={{
+              headerShown: true,
+              title: "",
+              headerStyle: {
+                shadowOpacity: 0,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Registration Screen"
+            component={SignUpScreen}
+            options={{
+              headerShown: true,
+              title: "Registration",
+              headerStyle: {
+                shadowOpacity: 0,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Login Screen"
+            component={LoginScreen}
+            options={{
+              title: "Authentication",
+              headerStyle: {
+                shadowOpacity: 0,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

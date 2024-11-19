@@ -5,10 +5,10 @@ import SignInUp from "../../components/SignInUp";
 import LinkButton from "../../components/LinkButton";
 
 const WelcomeScreen = ({ navigation }) => {
+  // Navigators
   const navTo = () => {
     navigation.navigate("Login Screen");
   };
-
   const navToSignUp = () => {
     navigation.navigate("Registration Screen");
   };
